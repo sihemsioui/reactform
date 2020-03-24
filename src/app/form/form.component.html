@@ -1,0 +1,40 @@
+
+
+  <form [formGroup]="myForm" class="example-form" (ngSubmit)="submitForm()">
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput  required type="email" placeholder="email" formControlName="email">
+      <mat-error *ngIf="myForm. hasError ('email','email')" >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="myForm.hasError('required','email')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="password" type="password"  required formControlName="password">
+        <mat-error *ngIf="myForm.hasError ('hasNumber','password')" >
+          Must have at least 1 number!
+        </mat-error>
+        <mat-error *ngIf="myForm.hasError('required','password') || myForm.hasError('minlength','password')" >
+          Must be at least 8 characters!
+        </mat-error>
+        <mat-error *ngIf="myForm.hasError ('hasCapitalCase','password')" >
+          Must contain at least 1 in Capital Case!
+        </mat-error>
+        <mat-error *ngIf="myForm. hasError ('hasSmallCase','password')" >
+          Must contain at least 1 Letter in Small Case!
+        </mat-error>
+
+        <mat-error *ngIf="myForm. hasError ('hasSpecialCharacters','password')" >
+          Must contain at least 1 Special Character!
+        </mat-error>
+    </mat-form-field>
+
+    <div class="button-wrapper">
+        <button mat-flat-button class="btn btn-primary">Submit</button>
+      </div>
+  </form>
+  
