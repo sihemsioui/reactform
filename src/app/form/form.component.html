@@ -33,6 +33,17 @@
         </mat-error>
     </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput placeholder="confirm password" type="password"  required formControlName="confirmpassword">
+    
+      <mat-error
+  class="text-danger" *ngIf="myForm.controls['confirmpassword'].hasError('NoPassswordMatch')">
+  Password do not match
+      </mat-error>
+    
+    </mat-form-field>
+    
     <div class="button-wrapper">
         <button mat-flat-button class="btn btn-primary">Submit</button>
       </div>

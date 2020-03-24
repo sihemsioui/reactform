@@ -21,8 +21,9 @@ ngOnInit() {
       this.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
       this.patternValidator(/[a-z]/, { hasSmallCase: true }),
       this.patternValidator(/[[!@#$%^&*()_+-=[{};':"|,.<>]/, { hasSpecialCharacters: true }),
-    ])
-  });
+    ]),
+    confirmpassword: new FormControl('',[Validators.required])
+  },this.passwordMatchValidator);
 
 }
 
@@ -43,6 +44,16 @@ submitForm() {
       return valid ? null : error;
     };
   
+}
+
+passwordMatchValidator(control: AbstractControl) {
+  const password: string = control.get('password').value; // get password from our password form control
+  const confirmPassword: string = control.get('confirmpassword').value; // get password from our confirmPassword form control
+  // compare is the password math
+  if (password !== confirmPassword) {
+    // if they don't match, set an error in our confirmPassword form control
+    control.get('confirmpassword').setErrors({ NoPassswordMatch: true });
+  }
 }
 
 }
